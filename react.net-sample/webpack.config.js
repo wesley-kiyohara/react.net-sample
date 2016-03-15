@@ -5,7 +5,11 @@ const webpack = require('webpack');
 const nodeModulesPath = path.join(__dirname, 'node_modules');
 
 module.exports = {
-  entry: ['./Src/index'],
+  context: path.join(__dirname, 'Src'),
+  entry: {
+    server: './Server',
+    client: './Client'
+  },
   output: {
     path: path.join(__dirname, 'Dist'),
     filename: '[name].bundle.js'

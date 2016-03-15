@@ -24,7 +24,7 @@ namespace react.net_sample
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/react").Include(
-                "~/dist/*.bundle.js"));
+                "~/dist/client.bundle.js"));
         }
     }
 }
