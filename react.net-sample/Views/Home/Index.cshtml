@@ -1,2 +1,25 @@
-﻿<div id="root"></div>
+﻿@{
+    Layout = null;
+}
 
+@model IEnumerable<React.NETSample.Models.InventoryItemModel>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+
+    </div>
+    @Html.React("Components.Inventory", new { inventory = Model })
+    <script src="https://fb.me/react-0.14.0.min.js"></script>
+    <script src="https://fb.me/react-dom-0.14.0.min.js"></script>
+    @Scripts.Render("~/bundles/react")
+    @Html.ReactInitJavaScript()
+</body>
+</html>

@@ -7,8 +7,8 @@ const nodeModulesPath = path.join(__dirname, 'node_modules');
 module.exports = {
   context: path.join(__dirname, 'Src'),
   entry: {
-    server: './Server',
-    client: './Client'
+    server: './server.js',
+    client: './client.js'
   },
   output: {
     path: path.join(__dirname, 'Dist'),

@@ -2,6 +2,7 @@ var React = require('react');
 var $ = require('jquery');
 
 const defaultProps = {
+  inventory: [],
   makes: [
     { makeId: 0, make: 'All'},
     { makeId: 1, make: 'Toyota'},
@@ -29,7 +30,7 @@ class Inventory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inventory: [],
+      inventory: this.props.inventory,
       makeId: 0,
       modelId: 0,
       year: 0
@@ -37,10 +38,6 @@ class Inventory extends React.Component {
 
     this._handleChange = this._handleChange.bind(this);
     this._updateInventory = this._updateInventory.bind(this);
-  }
-
-  componentDidMount() {
-    this._updateInventory();
   }
 
 
