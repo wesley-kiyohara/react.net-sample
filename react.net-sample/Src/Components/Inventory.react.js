@@ -1,4 +1,5 @@
 var React = require('react');
+var Filter = require('./Filter.react');
 var $ = require('jquery');
 
 const defaultProps = {
@@ -84,8 +85,9 @@ class Inventory extends React.Component {
 
     var yearOptions = (x, y) => {
       var options = [];
+      options.push(<option value={0}>All</option>);
       for (x; x <= y; x++) {
-        options.push(<option key={x} value={x}>{x}</option>)
+        options.push(<option value={x}>{x}</option>);
       }
       return options;
     };
@@ -94,23 +96,22 @@ class Inventory extends React.Component {
       <div>
         <h1>Inventory</h1>
         <div>
-          <select name="makeId" value={makeId} onChange={this._handleChange}>
-            {
-              makes.map((m) => {
-                return <option key={m.makeId} value={m.makeId}>{m.make}</option>;
-              })
-            }
-          </select>
-          <select name="modelId" value={modelId} onChange={this._handleChange}>
-            {
-              models.map((m) => {
-                return <option key={m.modelId} value={m.modelId}>{m.model}</option>;
-              })
-            }
-          </select>
+          <Filter name="makeId" 
+            value={makeId} 
+            options={makes}
+            optionName="make" 
+            optionValue="makeId" 
+            handleChange={this._handleChange} 
+          />
+          <Filter name="modelId" 
+            value={modelId} 
+            options={models}
+            optionName="model" 
+            optionValue="modelId" 
+            handleChange={this._handleChange} 
+          />
           <select name="year" value={year} onChange={this._handleChange}>
-            <option value={0}>All</option>
-            {yearOptions(1997, 2015)}
+            {yearOptions(2011,2015)}
           </select>
         </div>
         <div>
