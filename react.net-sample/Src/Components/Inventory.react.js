@@ -23,7 +23,20 @@ const defaultProps = {
     { modelId: 31, model: 'TLX'},
     { modelId: 32, model: 'ILX'}
   ],
-  endYear: 2015
+  years: (start, end) => {
+    var options = [];
+    options.push({
+      year: 'All',
+      yearId: 0
+    });
+    for(var y = start; y <= end; y++) {
+      options.push({
+        year: y,
+        yearId: y
+      });
+    }
+    return options;
+  }
 };
 
 class Inventory extends React.Component {
@@ -80,17 +93,9 @@ class Inventory extends React.Component {
 
     var {
       makes,
-      models
+      models,
+      years
     } = this.props;
-
-    var yearOptions = (x, y) => {
-      var options = [];
-      options.push(<option value={0}>All</option>);
-      for (x; x <= y; x++) {
-        options.push(<option value={x}>{x}</option>);
-      }
-      return options;
-    };
 
     return (
       <div>
@@ -110,9 +115,13 @@ class Inventory extends React.Component {
             optionValue="modelId" 
             handleChange={this._handleChange} 
           />
-          <select name="year" value={year} onChange={this._handleChange}>
-            {yearOptions(2011,2015)}
-          </select>
+          <Filter name="year"
+            value={year}
+            options={years(2011,2015)}
+            optionName="year"
+            optionValue="yearId"
+            handleChange={this._handleChange}
+          />
         </div>
         <div>
           {
